@@ -1,0 +1,83 @@
+﻿@model WorkforceManagementClient.Models.EmployeeViewModel
+
+@{
+    ViewBag.Title = "Employee Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Employee @Model.EmployeeFirstName @Model.EmployeeSurname Details</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.EmployeeID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EmployeeID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EmployeeTitle)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EmployeeTitle)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EmployeeFirstName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EmployeeFirstName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EmployeeSurname)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EmployeeSurname)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EmployeeSocialSecurityNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EmployeeSocialSecurityNumber)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EmployeeAddress)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EmployeeAddress)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EmployeePhone)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EmployeePhone)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EmployeeHireDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EmployeeHireDate)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit Employee", "Edit", new { id = Model.EmployeeID })|
+    @Html.ActionLink("Skills", "Skills/" + @Model.EmployeeID, "Employee", new {empsurname = Model.EmployeeSurname, empfirstname = Model.EmployeeFirstName}, null)|
+    @Html.ActionLink("Back to List", "Index")
+</p>

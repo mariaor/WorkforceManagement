@@ -1,0 +1,51 @@
+﻿
+@model WorkforceManagementClient.Models.SkillViewModel
+
+@{
+    ViewBag.Title = "Skill Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details of Skill @Model.SkillName</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.SkillID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SkillID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SkillName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SkillName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SkillDescription)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SkillDescription)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SkillDateOfCreation)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SkillDateOfCreation)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit Skill", "Edit", new { id = Model.SkillID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

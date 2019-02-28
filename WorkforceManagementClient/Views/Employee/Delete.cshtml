@@ -1,0 +1,92 @@
+﻿@model WorkforceManagementClient.Models.EmployeeViewModel
+
+@{
+    ViewBag.Title = "Delete Employee";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Delete Employee @Model.EmployeeFirstName @Model.EmployeeSurname</h2>
+
+<h3>Are you sure you want to delete @Model.EmployeeFirstName @Model.EmployeeSurname?</h3>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.EmployeeID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EmployeeID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EmployeeTitle)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EmployeeTitle)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EmployeeFirstName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EmployeeFirstName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EmployeeSurname)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EmployeeSurname)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EmployeeSocialSecurityNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EmployeeSocialSecurityNumber)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EmployeeAddress)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EmployeeAddress)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EmployeePhone)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EmployeePhone)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EmployeeHireDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EmployeeHireDate)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        @Html.HiddenFor(model => model.EmployeeID, new { htmlAttributes = new { @class = "form-control" } })
+
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

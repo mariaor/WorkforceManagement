@@ -1,0 +1,52 @@
+﻿@model IEnumerable<WorkforceManagementClient.Models.SkillViewModel>
+
+@{
+    ViewBag.Title = "Skills List";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Skills List</h2>
+
+<p>
+    @Html.ActionLink("Create New Skill", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.SkillID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SkillName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SkillDescription)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SkillDateOfCreation)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.SkillID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SkillName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SkillDescription)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SkillDateOfCreation)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.SkillID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.SkillID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.SkillID })
+        </td>
+    </tr>
+}
+
+</table>

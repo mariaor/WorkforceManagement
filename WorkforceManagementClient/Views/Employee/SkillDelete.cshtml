@@ -1,0 +1,62 @@
+﻿@model WorkforceManagementClient.Models.SkillViewModel
+
+@{
+    ViewBag.Title = "Delete Skill";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Delete Skill @Model.SkillName</h2>
+
+<h3>Are you sure you want to delete @Model.SkillName Skill?</h3>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.SkillID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SkillID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SkillName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SkillName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SkillDescription)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SkillDescription)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SkillDateOfCreation)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SkillDateOfCreation)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        @Html.Hidden("EmployeeSurname", @ViewData["employeesurname"])
+        @Html.Hidden("EmployeeFirstname", @ViewData["employeefirstname"])
+
+        @Html.HiddenFor(model => ViewData["employeeid"], new { htmlAttributes = new { @class = "form-control" } })
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Skills/" + ViewData["employeeid"], "Employee", new { empsurname = @ViewData["employeesurname"], empfirstname = @ViewData["employeefirstname"] }, null)
+        </div>
+    }
+</div>

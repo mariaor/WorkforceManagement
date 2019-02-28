@@ -1,0 +1,126 @@
+﻿@model IEnumerable<WorkforceManagementClient.Models.EmployeeViewModel>
+
+@section Scripts
+
+{
+    <script src="@Url.Content("~/Scripts/jquery-3.3.1.js")"></script>
+
+    <script src="@Url.Content("~/Scripts/jquery.tablesorter.min.js")"></script>
+
+    <script>
+
+        $(function () {
+            $("#employees").tablesorter({
+                sortList: [
+                    [0, 0],
+                    [1, 0],
+                    [2, 0],
+                    [3, 0],
+                    [4, 0],
+                    [5, 0],
+                    [6, 0]
+                ],
+                headerTemplate: '{content}{icon}',
+                cancelSelection: true,
+                headers: {
+                    // set "sorter : false" (no quotes) to disable the column
+                    0: {
+                        sorter: "text"
+                    },
+                    1: {
+                        sorter: "text"
+                    }
+                },
+                ignoreCase: true,
+                theme: 'jui',
+                headerTemplate: '{content} {icon}', // needed to add icon for jui theme
+                widgets: ['uitheme']
+            });
+        });
+    </script>
+}
+
+@{
+    ViewBag.Title = "Employees List";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+    <h2>Employees List</h2>
+
+<p>
+    @Html.ActionLink("Add New Employee", "Create")
+</p>
+<table class="table" id="employees">
+    <thead>
+        <tr style="cursor: pointer;">
+            <th>
+                @Html.DisplayNameFor(model => model.EmployeeID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EmployeeTitle)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EmployeeFirstName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EmployeeSurname)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EmployeeSocialSecurityNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EmployeeAddress)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EmployeePhone)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EmployeeHireDate)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EmployeeID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EmployeeTitle)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EmployeeFirstName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EmployeeSurname)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EmployeeSocialSecurityNumber)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EmployeeAddress)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EmployeePhone)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EmployeeHireDate)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.EmployeeID }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.EmployeeID }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.EmployeeID })|
+                    @Html.ActionLink("Skills", "Skills/" + item.EmployeeID, "Employee", new {empsurname = item.EmployeeSurname, empfirstname = item.EmployeeFirstName}, null)|
+
+                </td>
+            </tr>
+        }
+    </tbody>
+
+
+</table>
+
+
