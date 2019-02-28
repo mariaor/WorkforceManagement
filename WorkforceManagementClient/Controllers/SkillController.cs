@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
+using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web;
@@ -35,11 +36,16 @@ namespace WorkforceManagementClient.Controllers
                 }
                 else //web api sent error response 
                 {
-                    //log response status here..
+                    HttpStatusCode statuscode = result.StatusCode;
 
-                    skills = Enumerable.Empty<SkillViewModel>();
-
-                    ModelState.AddModelError(string.Empty, "Server error. Please contact administrator.");
+                    if (statuscode == HttpStatusCode.NotFound)
+                    {
+                        return View("NotFound");
+                    }
+                    else
+                    {
+                        return View("Error");
+                    }
                 }
             }
             return View(skills);
@@ -67,11 +73,16 @@ namespace WorkforceManagementClient.Controllers
                 }
                 else //web api sent error response 
                 {
-                    //log response status here..
+                    HttpStatusCode statuscode = result.StatusCode;
 
-                    skill = null;
-
-                    ModelState.AddModelError(string.Empty, "Server error. Please contact administrator.");
+                    if (statuscode == HttpStatusCode.NotFound)
+                    {
+                        return View("NotFound");
+                    }
+                    else
+                    {
+                        return View("Error");
+                    }
                 }
             }
             return View(skill);
@@ -104,16 +115,23 @@ namespace WorkforceManagementClient.Controllers
                     }
                     else //web api sent error response 
                     {
-                        //log response status here..
-                        ModelState.AddModelError(string.Empty, "Server error. Please contact administrator.");
+                        HttpStatusCode statuscode = result.StatusCode;
+
+                        if (statuscode == HttpStatusCode.NotFound)
+                        {
+                            return View("NotFound");
+                        }
+                        else
+                        {
+                            return View("Error");
+                        }
                     }
 
                 }
-                return View(skill);
             }
             catch
             {
-                return View(skill);
+                return View("Error");
             }
         }
 
@@ -136,6 +154,19 @@ namespace WorkforceManagementClient.Controllers
                     readTask.Wait();
 
                     skill = readTask.Result;
+                }
+                else //web api sent error response 
+                {
+                    HttpStatusCode statuscode = result.StatusCode;
+
+                    if (statuscode == HttpStatusCode.NotFound)
+                    {
+                        return View("NotFound");
+                    }
+                    else
+                    {
+                        return View("Error");
+                    }
                 }
             }
 
@@ -160,8 +191,20 @@ namespace WorkforceManagementClient.Controllers
 
                     return RedirectToAction("Index");
                 }
+                else //web api sent error response 
+                {
+                    HttpStatusCode statuscode = result.StatusCode;
+
+                    if (statuscode == HttpStatusCode.NotFound)
+                    {
+                        return View("NotFound");
+                    }
+                    else
+                    {
+                        return View("Error");
+                    }
+                }
             }
-            return View(skill);
         }
 
         // GET: skill/delete/5
@@ -183,6 +226,19 @@ namespace WorkforceManagementClient.Controllers
                     readTask.Wait();
 
                     skill = readTask.Result;
+                }
+                else //web api sent error response 
+                {
+                    HttpStatusCode statuscode = result.StatusCode;
+
+                    if (statuscode == HttpStatusCode.NotFound)
+                    {
+                        return View("NotFound");
+                    }
+                    else
+                    {
+                        return View("Error");
+                    }
                 }
             }
 
@@ -207,9 +263,20 @@ namespace WorkforceManagementClient.Controllers
 
                     return RedirectToAction("Index");
                 }
-            }
+                else //web api sent error response 
+                {
+                    HttpStatusCode statuscode = result.StatusCode;
 
-            return RedirectToAction("Index");
+                    if (statuscode == HttpStatusCode.NotFound)
+                    {
+                        return View("NotFound");
+                    }
+                    else
+                    {
+                        return View("Error");
+                    }
+                }
+            }
         }
     }
 }
